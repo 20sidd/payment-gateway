@@ -2,14 +2,20 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const helmet = require('helmet');
+const compression = require('compression');
+const morgan = require('morgan');
 //const cnics = require('cnics-checker');
 const uuid = require('uuid');
 const userRoutes = require('./routes/user');
 const transactionRoutes = require('./routes/transaction');
 const errorController = require('./controllers/error');
+const MONGODB_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.ozeao62.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}`;
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
+app.use(helmet());
+app.use(compression());
 app.use(bodyParser.urlencoded({extended: false}));
 //app.use(express.static(path.join(__dirname, 'public')));
 //app.get(req,res=>{})
@@ -27,7 +33,7 @@ mongoose
   )
   //mongodb+srv://pertinacious18:dausasm100@cluster0.ozeao62.mongodb.net/test
   .then(result => {
-    app.listen(3000);
+    app.listen(process.env.PORT || 3000);
   })
   .catch(err => {
     console.log(err);

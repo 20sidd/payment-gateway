@@ -1,0 +1,10 @@
+{
+    "env":{
+        "MONGO_USER":"pertinacious18",
+        "MONGO_DEFAULT_DATABASE":"test",
+        "MONGO_PASSWORD":"dausasm100"
+
+
+
+    }
+}
