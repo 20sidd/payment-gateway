@@ -53,12 +53,12 @@
               <input type="text" name="mobileNumber" id="mobileNumber">
             </div>
         </div>
-        <input type="submit" value="Submit"style="background-color: blue; color: white;" onclick="return validateCNIC()">
+        <button type = "submit" style="background-color: blue; color: white;" onclick="validateCNIC()">Submit</button>
         </form>
 
 
       <script>
-        validateCNIC()
+        function validateCNIC()
         {
           //const form = document.querySelector('#userform');
           console.log('start');
@@ -69,13 +69,11 @@
           if (!/^[0-9]{5}-[0-9]{7}-[0-9]{1}$/.test(cnic)) {
             console.log('wrong');
             cnicError.style.display = 'block';
-            return false;
-            //event.preventDefault();
           } else {
             console.log('right');
             
             cnicError.style.display = 'none';
-            return true;
+            //return true;
           }
         //});
       }
