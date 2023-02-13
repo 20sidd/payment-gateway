@@ -7,6 +7,7 @@
   </div>
   <div style="margin: 25px;">
   </div>
+  
 <% if (transactions.length) { %>
     <% transactions.forEach(function(transaction){ %>
       <!-- <div style="text-align: center;">
@@ -28,15 +29,29 @@
           width: 20%;
           text-align: left;
           margin-right: 1rem;
+          font-weight: bold;
         }
       
         .form-group input {
-          width: 25%;
+          width: 45%;
           padding: 0.5rem;
+          
+        }
+        .pagination-button a {
+          /* background-color: white; */
+  color: blue;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+   padding: 5px 15px; 
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+
         }
       </style>
       
-      <div style="text-align: center;">
+      <div style="text-align: center;background-color: lightgray;width:40%">
         <form>
           <div class="form-group">
             <label for="transactionId">Transaction ID:</label>
@@ -68,13 +83,27 @@
     <% }); %>
     <div class="pagination">
       <% if (currentPage > 1) { %>
+        <button class="pagination-button">
+          <a href="/transactions?mobileNumber=<%= mobileNumber %>&page=<%= previousPage %>">Previous</a>
+        </button>
+      <% } %>
+      <% if (currentPage < numPages) { %>
+        <button class="pagination-button">
+          <a href="/transactions?mobileNumber=<%= mobileNumber %>&page=<%= nextPage %>">Next</a>
+        </button>
+      <% } %>
+      </div>
+
+    <!-- <div class="pagination">
+      <% if (currentPage > 1) { %>
         <a href="/transactions?mobileNumber=<%= mobileNumber %>&page=<%= previousPage %>">Previous</a>
       <% } %>
       <% if (currentPage < numPages) { %>
         <a href="/transactions?mobileNumber=<%= mobileNumber %>&page=<%= nextPage %>">Next</a>
       <% } %>
-    </div>
+    </div> -->
   <% } else { %>
     <p>No transactions found</p>
   <% } %>
+ 
   

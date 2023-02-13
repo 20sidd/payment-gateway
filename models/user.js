@@ -7,7 +7,7 @@ const Schema = mongoose.Schema;
 const paymentSchema = new Schema({
   // Create payment schema
 //const paymentSchema = new mongoose.Schema({
-    transactionId: { type: String, default: uuid.v1() , required: true, unique: true },
+    transactionId: { type: String, default: uuid.v4()+uuid.v1(), required: true, unique: true },
     bankAccountNumber: { type: String, required: true },
     bankName: { type: String, required: true },
     cnicNumber: { type: String, required: true, match: /^\d{5}-\d{7}-\d{1}$/ },
