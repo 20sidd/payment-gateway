@@ -1,0 +1,50 @@
+<!-- views/transactions.ejs -->
+
+<h1><%= pageTitle %></h1>
+
+<% if (message) { %>
+  <div class="alert alert-danger" role="alert">
+    <%= message %>
+  </div>
+<% } else { %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Transaction ID</th>
+        <th>Mobile Number</th>
+        <th>Bank Account Number</th>
+        <th>CNIC</th>
+        <th>Email</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (let i = (currentPage - 1) * 1; i < currentPage * 1 && i < transactions.length; i++) { %>
+        <tr>
+          <td><%= transactions[i].transactionId %></td>
+          <td><%= transactions[i].mobileNumber %></td>
+          <td><%= transactions[i].bankAccountNumber %></td>
+          <td><%= transactions[i].cnicNumber %></td>
+          <td><%= transactions[i].email %></td>
+          <td><%= transactions[i].dateTime.toLocaleDateString() %></td>
+
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <% if (hasPrevious) { %>
+        <li class="page-item">
+          <a class="page-link" href="/transactions/<%= currentPage - 1 %>?mobileNumber=<%= transactions[0].mobileNumber %>">Previous</a>
+        </li>
+      <% } %>
+      <% if (hasNext) { %>
+        <li class="page-item">
+          <a class="page-link" href="/transactions/<%= currentPage + 1 %>?mobileNumber=<%= transactions[0].mobileNumber %>">Next</a>
+        </li>
+      <% } %>
+    </ul>
+  </nav>
+<% } %>
+

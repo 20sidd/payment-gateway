@@ -1,0 +1,80 @@
+<div class="header_div" style="text-align: center; background-color: blue; height: 50px; color: white; padding-top: 5px;">
+  <h3>
+      <a style="text-decoration: none; color: white;" href="/">
+            Payment Gateway
+        </a>
+    </h3>
+  </div>
+  <div style="margin: 25px;">
+  </div>
+<% if (transactions.length) { %>
+    <% transactions.forEach(function(transaction){ %>
+      <!-- <div style="text-align: center;">
+        <p>Transaction ID: <%= transaction.transactionId %></p>
+        <p>Bank Account Number: <%= transaction.bankAccountNumber %></p>
+        <p>CNIC: <%= transaction.cnicNumber %></p>
+        <p>Email: <%= transaction.email %></p>
+        <p>Date: <%= transaction.dateTime.toLocaleString() %></p>
+      </div> -->
+      <style>
+        .form-group {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          margin-bottom: 1rem;
+        }
+      
+        .form-group label {
+          width: 20%;
+          text-align: left;
+          margin-right: 1rem;
+        }
+      
+        .form-group input {
+          width: 25%;
+          padding: 0.5rem;
+        }
+      </style>
+      
+      <div style="text-align: center;">
+        <form>
+          <div class="form-group">
+            <label for="transactionId">Transaction ID:</label>
+            <input type="text" id="transactionId" value="<%= transaction.transactionId %>" readonly />
+          </div>
+          <div class="form-group">
+            <label for="bankAccountNumber">Bank Account Number:</label>
+            <input type="text" id="bankAccountNumber" value="<%= transaction.bankAccountNumber %>" readonly />
+          </div>
+          <div class="form-group">
+            <label for="cnicNumber">CNIC:</label>
+            <input type="text" id="cnicNumber" value="<%= transaction.cnicNumber %>" readonly />
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" value="<%= transaction.email %>" readonly />
+          </div>
+          <div class="form-group">
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" value="<%=transaction.amount %>" readonly />
+          </div>
+          <div class="form-group">
+            <label for="dateTime">Date:</label>
+            <input type="text" id="dateTime" value="<%= transaction.dateTime.toLocaleString() %>" readonly />
+          </div>
+        </form>
+      </div>
+      
+    <% }); %>
+    <div class="pagination">
+      <% if (currentPage > 1) { %>
+        <a href="/transactions?mobileNumber=<%= mobileNumber %>&page=<%= previousPage %>">Previous</a>
+      <% } %>
+      <% if (currentPage < numPages) { %>
+        <a href="/transactions?mobileNumber=<%= mobileNumber %>&page=<%= nextPage %>">Next</a>
+      <% } %>
+    </div>
+  <% } else { %>
+    <p>No transactions found</p>
+  <% } %>
+  
