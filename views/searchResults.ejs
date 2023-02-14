@@ -1,6 +1,6 @@
-<div class="header_div" style="text-align: center; background-color: blue; height: 50px; color: white; padding-top: 5px;">
+<div class="header_div" style="text-align: center; background-color: #0f0f7e; height: 50px; color: white; padding-top: 5px;">
   <h3>
-      <a style="text-decoration: none; color: white;" href="/">
+      <a style="text-decoration: none;text-align: center ; font-family: 'Times New Roman', Times, serif; font-size: larger; color: white;" href="/">
             Payment Gateway
         </a>
     </h3>
@@ -10,13 +10,6 @@
   
 <% if (transactions.length) { %>
     <% transactions.forEach(function(transaction){ %>
-      <!-- <div style="text-align: center;">
-        <p>Transaction ID: <%= transaction.transactionId %></p>
-        <p>Bank Account Number: <%= transaction.bankAccountNumber %></p>
-        <p>CNIC: <%= transaction.cnicNumber %></p>
-        <p>Email: <%= transaction.email %></p>
-        <p>Date: <%= transaction.dateTime.toLocaleString() %></p>
-      </div> -->
       <style>
         .form-group {
           display: flex;
@@ -39,7 +32,7 @@
         }
         .pagination-button a {
           /* background-color: white; */
-  color: blue;
+  color: #0f0f7e;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -47,6 +40,7 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  flood-color: #0f0f7e;
 
         }
       </style>
@@ -93,15 +87,6 @@
         </button>
       <% } %>
       </div>
-
-    <!-- <div class="pagination">
-      <% if (currentPage > 1) { %>
-        <a href="/transactions?mobileNumber=<%= mobileNumber %>&page=<%= previousPage %>">Previous</a>
-      <% } %>
-      <% if (currentPage < numPages) { %>
-        <a href="/transactions?mobileNumber=<%= mobileNumber %>&page=<%= nextPage %>">Next</a>
-      <% } %>
-    </div> -->
   <% } else { %>
     <p>No transactions found</p>
   <% } %>

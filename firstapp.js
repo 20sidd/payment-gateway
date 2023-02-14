@@ -17,6 +17,8 @@ app.set('views', 'views');
 app.use(helmet());
 app.use(compression());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static(__dirname + '/views'));
+app.use(express.static(__dirname + '/js'));
 //app.use(express.static(path.join(__dirname, 'public')));
 //app.get(req,res=>{})
 app.get('/', function(req, res) {
